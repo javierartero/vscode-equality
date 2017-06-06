@@ -3,7 +3,7 @@
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
     "version": "0.0.1",
-    "publisher": "Javier Artero",
+    "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
     },
