@@ -1,11 +1,16 @@
 {
     "name": "equality",
     "displayName": "equality",
-    "description": "Put an equality in your life",
+    "description": "=calc (press ctrl + enter)",
     "version": "0.0.1",
-    "publisher": "javierartero",
+    "publisher": "Javier Artero",
     "engines": {
         "vscode": "^1.12.0"
+    },
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#0000FF",
+        "theme": "dark"
     },
     "categories": [
         "Other"
