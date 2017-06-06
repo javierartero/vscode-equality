@@ -9,29 +9,46 @@ export function activate() {
 }
 
 function equality(){
-    var
-        editor = vscode.window.activeTextEditor,
-        position = editor.selection.active,
+    const
         equal = '=',
-        lineSelection = new vscode.Selection(
-            position.line, 0,
-            position.line, position.character
+        editor = vscode.window.activeTextEditor;
+
+    var
+        position = editor.selection.active,
+        lineText = editor.document.getText(
+            new vscode.Selection(
+                position.line, 0,
+                position.line, position.character
+            )
         ),
-        lineText = editor.document.getText(lineSelection),
+        result,
         equalPosition = lineText.lastIndexOf(equal);
 
-    if(equalPosition){
+    if(equalPosition > -1 && lineText.length > 3){
         var
-            contentSelection = new vscode.Selection( position.line,equalPosition,
-                position.line, position.character),
-            contentText = editor.document.getText(contentSelection),
-            result = eval(contentText.substr(1));
+            contentSelection = new vscode.Selection(
+                position.line, equalPosition,
+                position.line, position.character
+            ),
+            contentText = editor.document.getText(contentSelection);
 
-        editor.edit(function (edit) {
-            edit.replace(contentSelection, result);
-            console.log(contentSelection);
-            console.log(result);
-        });
+
+        if(result = evaluate(contentText)){
+            editor.edit(function (edit) {
+                edit.replace(contentSelection, result);
+            });
+        }
+    }
+}
+
+function evaluate(str){
+    try {
+        return String(eval(str.replace(/ /g, '').substr(1)));
+    } catch (e) {
+        if (e instanceof SyntaxError) {
+            console.warn(e.message);
+            return false
+        }
     }
 }
 
