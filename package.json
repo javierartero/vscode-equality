@@ -12,6 +12,11 @@
         "color": "#0000FF",
         "theme": "dark"
     },
+    "homepage": "https://github.com/javierartero/equality/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com:javierartero/equality.git"
+    },
     "categories": [
         "Other"
     ],
