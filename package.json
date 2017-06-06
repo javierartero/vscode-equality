@@ -2,14 +2,14 @@
     "name": "equality",
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
     },
     "icon": "images/icon.png",
     "galleryBanner": {
-        "color": "#0000FF",
+        "color": "#503F2F",
         "theme": "dark"
     },
     "homepage": "https://github.com/javierartero/equality/blob/master/README.md",
