@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
@@ -15,7 +15,7 @@
     "homepage": "https://github.com/javierartero/equality/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com:javierartero/equality.git"
+        "url": "https://github.com/javierartero/equality"
     },
     "categories": [
         "Other"
@@ -25,10 +25,12 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "keybindings": [{
-			"command": "extension.equality",
-			"key": "Ctrl+Enter"
-        }]
+        "keybindings": [
+            {
+                "command": "extension.equality",
+                "key": "Ctrl+Enter"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
