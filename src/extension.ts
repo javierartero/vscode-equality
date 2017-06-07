@@ -1,6 +1,9 @@
 'use strict';
 
 import * as vscode from 'vscode';
+const faker = require('faker');
+
+faker.locale = "es";
 
 
 export function activate() {
@@ -35,15 +38,17 @@ function equality(){
 
         if(result = evaluate(contentText)){
             editor.edit(function (edit) {
-                edit.replace(contentSelection, result);
+                edit.replace(contentSelection, String(result));
             });
         }
     }
 }
 
 function evaluate(str){
+    let evalue = str.replace(/ /g, '').substr(1);
+
     try {
-        return String(eval(str.replace(/ /g, '').substr(1)));
+        return eval(evalue);
     } catch (e) {
         if (e instanceof SyntaxError) {
             console.warn(e.message);
