@@ -2,6 +2,9 @@
 
 import * as vscode from 'vscode';
 
+const
+    faker = require('faker'),
+    config = vscode.workspace.getConfiguration();
 
 export function activate() {
 	console.log('Congratulations, your extension "EQUALITY" is now active!');
@@ -10,7 +13,7 @@ export function activate() {
 
 function equality(){
     const
-        equal = '=',
+        equal = String(config.get('equality.symbol')),
         editor = vscode.window.activeTextEditor;
 
     var
@@ -35,15 +38,17 @@ function equality(){
 
         if(result = evaluate(contentText)){
             editor.edit(function (edit) {
-                edit.replace(contentSelection, result);
+                edit.replace(contentSelection, String(result));
             });
         }
     }
 }
 
 function evaluate(str){
+    let evalue = str.replace(/ /g, '').substr(1);
+
     try {
-        return String(eval(str.replace(/ /g, '').substr(1)));
+        return eval(evalue);
     } catch (e) {
         if (e instanceof SyntaxError) {
             console.warn(e.message);
