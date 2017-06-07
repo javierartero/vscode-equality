@@ -1,10 +1,10 @@
 'use strict';
 
 import * as vscode from 'vscode';
-const faker = require('faker');
 
-faker.locale = "es";
-
+const
+    faker = require('faker'),
+    config = vscode.workspace.getConfiguration();
 
 export function activate() {
 	console.log('Congratulations, your extension "EQUALITY" is now active!');
@@ -13,7 +13,7 @@ export function activate() {
 
 function equality(){
     const
-        equal = '=',
+        equal = String(config.get('equality.symbol')),
         editor = vscode.window.activeTextEditor;
 
     var

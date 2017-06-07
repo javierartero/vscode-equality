@@ -30,7 +30,18 @@
         "command": "extension.equality",
         "key": "Ctrl+Enter"
       }
-    ]
+    ],
+    "configuration": {
+        "type": "object",
+        "title": "equality configuration",
+        "properties": {
+            "equality.symbol": {
+                "type": ["string"],
+                "default": "=",
+                "description": "Specifies the symbol to use with equality."
+            }
+        }
+    }
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
