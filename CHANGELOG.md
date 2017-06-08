@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.2.2
+## 0.2.21
 - Faker has been added again
 - A preference has been entered to adjust the faker.locale
 
