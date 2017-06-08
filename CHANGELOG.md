@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.3.1
+- Fix configuration problems
+
 ## 0.3.0
 - Added equality.vars to configuration
 You can now create your own variables in user settings and call them from object e.
