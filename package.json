@@ -46,7 +46,10 @@
                     "type": [
                         "object"
                     ],
-                    "description": "You can create your own variables in user settings and call them =e.var_name"
+                    "default": {
+                        "plugin": "equality"
+                    },
+                    "description": "You can create your own variables in user settings and call them =e.var_name, reload window"
                 },
                 "faker.locale": {
                     "type": [
