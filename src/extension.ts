@@ -1,6 +1,11 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as faker from 'faker';
+
+// faker.prototype.setLocale = function (locale) {
+//     this.locale = locale;
+// }
 
 export function activate() {
 	console.log('Congratulations, your extension "EQUALITY" is now active!');
@@ -9,8 +14,11 @@ export function activate() {
 
 function equality(){
     const
-        equal = "=",
+        config = vscode.workspace.getConfiguration(),
+        equal = String(config.get('equality.symbol')),
         editor = vscode.window.activeTextEditor;
+
+        faker.locale = String(config.get('faker.locale'));
 
     var
         position = editor.selection.active,
