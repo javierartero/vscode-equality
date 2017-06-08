@@ -16,7 +16,7 @@ Add equality.vars in your users settings
     "github": "https://github.com/javierartero"
 }
 ```
-Reload the plugin with reload window
+Reload window
 
 When you call a ```=e``` you will be calling equality.vars
 ```
@@ -26,6 +26,7 @@ When you call a ```=e``` you will be calling equality.vars
 
 * [faker.js gitHub](https://github.com/marak/Faker.js/)
 * [JSDoc API Browser](http://marak.github.io/faker.js/)
+
 ## You can use the "faker.js"
 faker.js is an external library generate massive amounts of fake
 ```
