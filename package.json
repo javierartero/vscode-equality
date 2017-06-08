@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
