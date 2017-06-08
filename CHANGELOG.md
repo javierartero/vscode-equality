@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.3.0
+- Added equality.vars to configuration
+You can now create your own variables in user settings and call them from object e.
+```
+=e.name
+```
+- Has been removed script to remove white space, now you should run expressions of type
+```
+=new date()
+```
+
 ## 0.2.21
 - Faker has been added again
 - A preference has been entered to adjust the faker.locale

@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
-    "version": "0.2.21",
+    "version": "0.3.0",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
@@ -41,6 +41,12 @@
                     ],
                     "default": "=",
                     "description": "Specifies the symbol to use with equality."
+                },
+                "equality.vars": {
+                    "type": [
+                        "object"
+                    ],
+                    "description": "You can create your own variables in user settings and call them =e.var_name"
                 },
                 "faker.locale": {
                     "type": [
