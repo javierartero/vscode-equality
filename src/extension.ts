@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+
 import * as faker from 'faker';
 
 const
@@ -38,25 +39,39 @@ function equality(){
             ),
             contentText = editor.document.getText(contentSelection);
 
-
         if(result = evaluate(contentText)){
             editor.edit(function (edit) {
                 edit.replace(contentSelection, String(result));
             });
         }
     }
+
+    return "😎 Hi neo welcome to matrix";
 }
 
 function evaluate(str){
-    let evalue = str.substr(1);
-
     try {
-        return eval(evalue);
+        let evalue = eval(str.substr(1));
+
+        if(typeof(evalue) == 'object') {
+            console.log(evalue)
+            vscode.window.showInputBox({prompt: 'Are you calling an object,'+
+            'do you want help about the plugin?'})
+                .then(function(val){
+                    let v = val.toLowerCase();
+                    if(v.includes('yes') || v == 'y' ) {
+                        vscode.commands.executeCommand('vscode.open', vscode.Uri.parse('https://github.com/javierartero/equality'));
+                    }
+                });
+            return false;
+        }
+
+        return evalue;
     } catch (e) {
         if (e instanceof SyntaxError) {
             console.warn(e.message);
-            return false
         }
+        return "I can not evaluate this 😅";
     }
 }
 
