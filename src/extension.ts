@@ -71,7 +71,7 @@ function evaluate(str){
         if (e instanceof SyntaxError) {
             console.warn(e.message);
         }
-        return "I can not evaluate this 😅";
+        return "I can't evaluate this 😅";
     }
 }
 
