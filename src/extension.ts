@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 
 import * as faker from 'faker';
+import {Help} from './help';
 
 const
     config = vscode.workspace.getConfiguration(),
@@ -52,26 +53,21 @@ function equality(){
 function evaluate(str){
     try {
         let evalue = eval(str.substr(1));
-
         if(typeof(evalue) == 'object') {
-            console.log(evalue)
-            vscode.window.showInputBox({prompt: 'Are you calling an object,'+
-            'do you want help about the plugin?'})
-                .then(function(val){
-                    let v = val.toLowerCase();
-                    if(v.includes('yes') || v == 'y' ) {
-                        vscode.commands.executeCommand('vscode.open', vscode.Uri.parse('https://github.com/javierartero/equality'));
-                    }
-                });
+            let help = new Help(str, '🤖 Are you calling an object, do you want help?');
             return false;
         }
-
+        if(typeof(evalue) == 'undefined') {
+            let help = new Help(str, "I can't evaluate this 😅");
+            return false;
+        }
         return evalue;
     } catch (e) {
         if (e instanceof SyntaxError) {
             console.warn(e.message);
         }
-        return "I can't evaluate this 😅";
+        let help = new Help(str, "I can't evaluate this 😅");
+        return false;
     }
 }
 
