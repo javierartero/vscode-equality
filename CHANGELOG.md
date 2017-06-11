@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.4.0
+- bye bye [object Object], now evaluates by content type, should not now list the contents of the functions but throw the same function without arguments
+- Added a help system with access to external documentation on errors
+- Now you can call the help method to list all help topics
+```
+=help
+```
+
 ## 0.3.1
 - Fix configuration problems
 
