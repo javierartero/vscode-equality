@@ -22,7 +22,7 @@ export class Help {
       new Error("faker", "View docs faker.js",
        "https://github.com/marak/Faker.js/"),
       new Error("e.", "View equality custom variables",
-       "https://github.com/javierartero/vscode-equality"),
+       "https://github.com/javierartero/vscode-equality#custom-vars"),
       new Error("=", this.defaultMessage,
        "https://github.com/javierartero/vscode-equality")
     ];
