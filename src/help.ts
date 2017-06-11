@@ -10,21 +10,20 @@ class Error {
 
 export class Help {
   private error: string;
-  private defaultmessage: string;
+  private defaultMessage: string;
   private errors:any;
-  private options = [];
 
-  constructor(error:string, defaultmessage:string = 'oooops') {
+  constructor(error:string, defaultMessage:string = 'equality documentation 🤓') {
 		this.error = error;
-    this.defaultmessage = defaultmessage;
+    this.defaultMessage = defaultMessage;
     this.errors = [
-      new Error("e.", "View docs custom variables",
-       "https://github.com/javierartero/equality"),
       new Error("vscode", "View docs vscode",
        "https://code.visualstudio.com/docs/extensionAPI/vscode-api"),
       new Error("faker", "View docs faker.js",
        "https://github.com/marak/Faker.js/"),
-      new Error("=", this.defaultmessage,
+      new Error("e.", "View equality custom variables",
+       "https://github.com/javierartero/equality"),
+      new Error("=", this.defaultMessage,
        "https://github.com/javierartero/equality")
     ];
 
@@ -36,10 +35,18 @@ export class Help {
     let message = [];
     let url = [];
 
-    for (let e of this.errors) {
-      if(this.error.includes(e.name)){
+    if(this.error == 'all'){
+      let errorsReverse = this.errors.reverse();
+      for (let e of this.errors) {
         message.push(e.message);
         url.push(e.url);
+      }
+    }else{
+      for (let e of this.errors) {
+        if(this.error.includes(e.name)){
+          message.push(e.message);
+          url.push(e.url);
+        }
       }
     }
 
