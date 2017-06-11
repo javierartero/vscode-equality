@@ -1,7 +1,9 @@
 'use strict';
 
 import * as vscode from 'vscode';
+
 import * as faker from 'faker';
+import {Help} from './help';
 
 const
     config = vscode.workspace.getConfiguration(),
@@ -38,25 +40,43 @@ function equality(){
             ),
             contentText = editor.document.getText(contentSelection);
 
-
         if(result = evaluate(contentText)){
             editor.edit(function (edit) {
                 edit.replace(contentSelection, String(result));
             });
         }
     }
+
+    return "😎 Hi neo welcome to matrix";
+}
+
+let help = () => {
+    new Help('all');
+    return false;
 }
 
 function evaluate(str){
-    let evalue = str.substr(1);
-
     try {
-        return eval(evalue);
+        let evalue = eval(str.substr(1));
+        console.log(typeof(evalue));
+        if(typeof(evalue) == 'function'){
+            evalue = eval(str.replace(/\s/g,'').substr(1)+'()');
+        }
+        if(typeof(evalue) == 'object') {
+            let help = new Help(str, '🤖 Are you calling an object, do you want help?');
+            return false;
+        }
+        if(typeof(evalue) == 'undefined') {
+            let help = new Help(str, "I can't evaluate this 😅");
+            return false;
+        }
+        return evalue;
     } catch (e) {
         if (e instanceof SyntaxError) {
             console.warn(e.message);
-            return false
         }
+        let help = new Help(str, "I can't evaluate this 😅");
+        return false;
     }
 }
 

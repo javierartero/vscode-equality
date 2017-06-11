@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "=calc (press ctrl + enter)",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
@@ -12,10 +12,10 @@
         "color": "#503F2F",
         "theme": "dark"
     },
-    "homepage": "https://github.com/javierartero/equality/blob/master/README.md",
+    "homepage": "https://github.com/javierartero/vscode-equality",
     "repository": {
         "type": "git",
-        "url": "https://github.com/javierartero/equality"
+        "url": "https://github.com/javierartero/vscode-equality"
     },
     "categories": [
         "Other"
