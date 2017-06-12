@@ -12,6 +12,9 @@ export class Help {
   private error: string;
   private defaultMessage: string;
   private errors:any;
+  private equal: string = String(
+    vscode.workspace.getConfiguration().get('equality.symbol'));
+
 
   constructor(error:string, defaultMessage:string = 'equality documentation 🤓') {
 		this.error = error;
@@ -23,7 +26,7 @@ export class Help {
        "https://github.com/marak/Faker.js/"),
       new Error("e.", "View equality custom variables",
        "https://github.com/javierartero/vscode-equality#custom-vars"),
-      new Error("=", this.defaultMessage,
+      new Error(this.equal, this.defaultMessage,
        "https://github.com/javierartero/vscode-equality")
     ];
 
