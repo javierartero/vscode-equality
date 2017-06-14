@@ -24,7 +24,7 @@ export class Help {
        "https://code.visualstudio.com/docs/extensionAPI/vscode-api"),
       new Error("faker", "View docs faker.js",
        "https://github.com/marak/Faker.js/"),
-      new Error("e.", "View equality custom variables",
+      new Error(this.equal+"e.", "View equality custom variables",
        "https://github.com/javierartero/vscode-equality#custom-vars"),
       new Error(this.equal, this.defaultMessage,
        "https://github.com/javierartero/vscode-equality")
