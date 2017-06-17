@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.5.0
+- From now you can use multi-selection
+- Now you can call the rand method passing the arguments min and max
+```
+=rand(150,1000)
+```
+
 ## 0.4.0
 - bye bye [object Object], now evaluates by content type, should not now list the contents of the functions but throw the same function without arguments
 - Added a help system with access to external documentation on errors

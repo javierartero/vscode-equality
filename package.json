@@ -1,8 +1,8 @@
 {
     "name": "equality",
     "displayName": "equality",
-    "description": "=calc (press ctrl + enter)",
-    "version": "0.4.0",
+    "description": "Evaluate javascript and replace this with the result",
+    "version": "0.5.0",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
@@ -19,6 +19,13 @@
     },
     "categories": [
         "Other"
+    ],
+    "keywords": [
+        "Javascript",
+        "eval",
+        "calculate",
+        "Faker",
+        "Lorem Ipsum"
     ],
     "activationEvents": [
         "onCommand:extension.equality"

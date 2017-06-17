@@ -1,5 +1,9 @@
 # equality README
-This plugin use eval() and external libraries to evaluate and replace javascript content
+This plugin use eval(), custom functions, methods and external libraries to evaluate and replace javascript content
+
+## You can use multiples cursors <a id="multiple-cursor"></a>
+
+![multiple-cursor](images/equality6.gif)
 
 ## You can calculate <a id="calculate"></a>
 ```
@@ -20,7 +24,7 @@ Reload window
 
 When you call a ```=e``` you will be calling equality.vars
 ```
-=e.name_var //Press Ctrol + Enter
+=e.plugin //Press Ctrol + Enter
 ```
 ![vars](images/equality3.gif)
 
@@ -44,5 +48,18 @@ faker.js is an external library generate massive amounts of fake
 
 * [faker.js gitHub](https://github.com/marak/Faker.js/)
 * [JSDoc API Browser](http://marak.github.io/faker.js/)
+
+## Custom functions and methods
+
+### rand(min:number = 0, max:number = 100) <a id="rand"></a>
+
+![rand](images/equality6.gif)
+
+Default arguments
+min:number = 0, max:number = 100
+
+```
+=rand(-100,100)
+```
 
 ## Put an equality in your life...

@@ -18,41 +18,33 @@ export function activate() {
 }
 
 function equality(){
-    const
-        editor = vscode.window.activeTextEditor;
+    const editor = vscode.window.activeTextEditor;
 
-    var
-        position = editor.selection.active,
-        lineText = editor.document.getText(
-            new vscode.Selection(
-                position.line, 0,
-                position.line, position.character
-            )
-        ),
-        result,
-        equalPosition = lineText.lastIndexOf(equal);
+    editor.edit((edit) => {
+        for(let selection of editor.selections){
 
-    if(equalPosition > -1 && lineText.length > 3){
-        var
-            contentSelection = new vscode.Selection(
-                position.line, equalPosition,
-                position.line, position.character
-            ),
-            contentText = editor.document.getText(contentSelection);
+            let
+                position = selection.active,
+                lineText = editor.document.lineAt(selection.end.line).text,
+                result,
+                equalPosition = lineText.lastIndexOf(equal);
 
-        if(result = evaluate(contentText)){
-            editor.edit(function (edit) {
-                edit.replace(contentSelection, String(result));
-            });
+            if(equalPosition > -1){
+                let
+                    contentSelection = new vscode.Selection(
+                        position.line, equalPosition,
+                        position.line, position.character
+                    ),
+                    contentText = editor.document.getText(contentSelection);
+
+                if(contentText.length > 3 && (result = evaluate(contentText))){
+                    edit.replace(contentSelection, String(result));
+                }
+            }
         }
-    }
+    });
 
     return "😎 Hi neo welcome to matrix";
-}
-
-let help = () => {
-    new Help('all');
-    return false;
 }
 
 function evaluate(str){
@@ -78,6 +70,15 @@ function evaluate(str){
         let help = new Help(str, "I can't evaluate this 😅");
         return false;
     }
+}
+
+let help = () => {
+    new Help('all');
+    return false;
+}
+
+let rand = (min:number = 0, max:number = 100) => {
+    return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 export function deactivate() {
