@@ -20,34 +20,34 @@ export function activate() {
 function equality(){
     const editor = vscode.window.activeTextEditor;
 
-    for(let selection of editor.selections){
+    editor.edit((edit) => {
+        for(let selection of editor.selections){
 
-        let
-            position = selection.active,
-            lineText = editor.document.getText(
-                new vscode.Selection(
-                    position.line, 0,
-                    position.line, position.character
-                )
-            ),
-            result,
-            equalPosition = lineText.lastIndexOf(equal);
-
-        if(equalPosition > -1){
             let
-                contentSelection = new vscode.Selection(
-                    position.line, equalPosition,
-                    position.line, position.character
+                position = selection.active,
+                lineText = editor.document.getText(
+                    new vscode.Selection(
+                        position.line, 0,
+                        position.line, position.character
+                    )
                 ),
-                contentText = editor.document.getText(contentSelection);
+                result,
+                equalPosition = lineText.lastIndexOf(equal);
 
-            if(contentText.length > 3 && (result = evaluate(contentText))){
-                editor.edit(function (edit) {
-                    edit.replace(contentSelection, String(result))
-                });
+            if(equalPosition > -1){
+                let
+                    contentSelection = new vscode.Selection(
+                        position.line, equalPosition,
+                        position.line, position.character
+                    ),
+                    contentText = editor.document.getText(contentSelection);
+
+                if(contentText.length > 3 && (result = evaluate(contentText))){
+                    edit.replace(contentSelection, String(result));
+                }
             }
         }
-    }
+    });
 
     return "😎 Hi neo welcome to matrix";
 }
