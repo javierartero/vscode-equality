@@ -25,12 +25,7 @@ function equality(){
 
             let
                 position = selection.active,
-                lineText = editor.document.getText(
-                    new vscode.Selection(
-                        position.line, 0,
-                        position.line, position.character
-                    )
-                ),
+                lineText = editor.document.lineAt(selection.end.line).text,
                 result,
                 equalPosition = lineText.lastIndexOf(equal);
 
@@ -50,11 +45,6 @@ function equality(){
     });
 
     return "😎 Hi neo welcome to matrix";
-}
-
-let help = () => {
-    new Help('all');
-    return false;
 }
 
 function evaluate(str){
@@ -80,6 +70,15 @@ function evaluate(str){
         let help = new Help(str, "I can't evaluate this 😅");
         return false;
     }
+}
+
+let help = () => {
+    new Help('all');
+    return false;
+}
+
+let rand = (min:number = 0, max:number = 100) => {
+    return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 export function deactivate() {
