@@ -62,4 +62,14 @@ min:number = 0, max:number = 100
 =rand(-100,100)
 ```
 
+### rgb(r:number, g:number, b:number) <a id="rgb"></a>
+
+![color](images/equality7.gif)
+
+### hex(hex:string) <a id="hex"></a>
+
+This method allows the use of shorthand '# ff0'
+
+![color](images/equality7.gif)
+
 ## Put an equality in your life...
