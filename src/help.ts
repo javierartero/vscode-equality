@@ -28,6 +28,10 @@ export class Help {
        "https://github.com/javierartero/vscode-equality#custom-vars"),
       new Error("rand", "View equality rand",
        "https://github.com/javierartero/vscode-equality#rand"),
+      new Error("rgb", "View equality rgb",
+       "https://github.com/javierartero/vscode-equality#rgb"),
+      new Error("hex", "View equality hex",
+       "https://github.com/javierartero/vscode-equality#hex"),
       new Error(this.equal, this.defaultMessage,
        "https://github.com/javierartero/vscode-equality")
     ];

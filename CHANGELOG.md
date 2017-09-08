@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.5.1
+- Methods have been added for the conversion of rgb to hexadecimal
+```
+=hex(255,213,65)
+=rgb('#ff87dd')
+```
+
 ## 0.5.0
 - From now you can use multi-selection
 - Now you can call the rand method passing the arguments min and max
