@@ -10,7 +10,9 @@ import {Help} from './help';
 const
     config = vscode.workspace.getConfiguration(),
     e = config.get('equality.vars'),
-    equal = String(config.get('equality.symbol'));
+    equal = String(config.get('equality.symbol')),
+    f = faker,
+    c = chroma;
 
 faker.locale = String(config.get('faker.locale'));
 
