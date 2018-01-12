@@ -3,6 +3,8 @@
 import * as vscode from 'vscode';
 
 import * as faker from 'faker';
+import * as chroma from 'chroma-js';
+
 import {Help} from './help';
 
 const
@@ -10,7 +12,7 @@ const
     e = config.get('equality.vars'),
     equal = String(config.get('equality.symbol'));
 
-    faker.locale = String(config.get('faker.locale'));
+faker.locale = String(config.get('faker.locale'));
 
 export function activate() {
 	console.log('Congratulations, your extension "EQUALITY" is now active!');
@@ -53,10 +55,6 @@ function evaluate(str){
         console.log(typeof(evalue));
         if(typeof(evalue) == 'function'){
             evalue = eval(str.replace(/\s/g,'').substr(1)+'()');
-        }
-        if(typeof(evalue) == 'object') {
-            let help = new Help(str, '🤖 Are you calling an object, do you want help?');
-            return false;
         }
         if(typeof(evalue) == 'undefined') {
             let help = new Help(str, "I can't evaluate this 😅");
