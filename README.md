@@ -22,7 +22,7 @@ Add equality.vars in your users settings
 ```
 Reload window
 
-When you call a ```=e``` you will be calling equality.vars
+When you call a `=e` you will be calling equality.vars
 ```
 =e.plugin //Press Ctrol + Enter
 ```
@@ -37,7 +37,7 @@ You can open all the help elements from the method
 =help
 ```
 
-![Faker](images/equality4.gif)
+![Help](images/equality4.gif)
 
 ## You can use the "faker.js"
 faker.js is an external library generate massive amounts of fake
@@ -62,7 +62,19 @@ min:number = 0, max:number = 100
 =rand(-100,100)
 ```
 
-### rgb(r:number, g:number, b:number) <a id="rgb"></a>
+## You can use the [chroma.js](http://gka.github.io/chroma.js/)
+
+*chroma.js* is a tiny JavaScript library (14kB) for dealing with colors!
+
+* read colors from a wide range of formats
+* analyze and manipulate colors
+* convert colors into wide range of formats
+* linear and bezier interpolation in different color spaces
+
+![color](images/equality8.gif)
+
+
+### rgb(r:number, g:number, b:number)
 
 ![color](images/equality7.gif)
 
