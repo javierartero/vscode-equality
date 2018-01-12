@@ -71,7 +71,7 @@ min:number = 0, max:number = 100
 * convert colors into wide range of formats
 * linear and bezier interpolation in different color spaces
 
-![color](images/equality8.gif)
+![chroma.js](images/equality8.gif)
 
 
 ### rgb(r:number, g:number, b:number)
