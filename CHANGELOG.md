@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.6.0
+- Add [chroma](http://gka.github.io/chroma.js/) library
+- Add alias to faker => f
+- Add alias to chroma => c
+```
+=chroma('red')
+=chroma.scale(['#FFF', 'blue']).colors(5)
+=c.scale(['#FFF', 'blue']).colors(5)
+```
+
+
 ## 0.5.1
 - Methods have been added for the conversion of rgb to hexadecimal
 ```

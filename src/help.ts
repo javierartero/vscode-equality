@@ -22,6 +22,8 @@ export class Help {
     this.errors = [
       new Error("vscode", "View docs vscode",
        "https://code.visualstudio.com/docs/extensionAPI/vscode-api"),
+      new Error("chroma", "View docs chroma.js",
+        "http://gka.github.io/chroma.js"),
       new Error("faker", "View docs faker.js",
        "https://github.com/marak/Faker.js/"),
       new Error(this.equal+"e.", "View equality custom variables",
