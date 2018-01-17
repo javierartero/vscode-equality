@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.7.0
+- Add [lodash](https://lodash.com/) library
+- Fix help file
+```
+=_.camelCase('change of format case')
+=_.repeat('I will not copy in class \n',100000)
+```
+
 ## 0.6.0
 - Add [chroma](http://gka.github.io/chroma.js/) library
 - Add alias to faker => f

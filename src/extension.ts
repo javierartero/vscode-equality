@@ -2,8 +2,9 @@
 
 import * as vscode from 'vscode';
 
-import * as faker from 'faker';
 import * as chroma from 'chroma-js';
+import * as faker from 'faker';
+import * as lodash from 'lodash';
 
 import {Help} from './help';
 
@@ -11,6 +12,7 @@ const
     config = vscode.workspace.getConfiguration(),
     e = config.get('equality.vars'),
     equal = String(config.get('equality.symbol')),
+    _ = lodash,
     f = faker,
     c = chroma;
 

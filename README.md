@@ -39,6 +39,28 @@ You can open all the help elements from the method
 
 ![Help](images/equality4.gif)
 
+## You can use the [chroma.js](http://gka.github.io/chroma.js/)
+
+*chroma.js* is a tiny JavaScript library (14kB) for dealing with colors!
+
+* read colors from a wide range of formats
+* analyze and manipulate colors
+* convert colors into wide range of formats
+* linear and bezier interpolation in different color spaces
+
+![chroma.js](images/equality8.gif)
+
+## You can use the [lodash.js](https://lodash.com/)
+
+Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
+Lodash’s modular methods are great for:
+
+* Iterating arrays, objects, & strings
+* Manipulating & testing values
+* Creating composite functions
+
+![lodash.js](images/equality9.gif)
+
 ## You can use the "faker.js"
 faker.js is an external library generate massive amounts of fake
 ```
@@ -61,17 +83,6 @@ min:number = 0, max:number = 100
 ```
 =rand(-100,100)
 ```
-
-## You can use the [chroma.js](http://gka.github.io/chroma.js/)
-
-*chroma.js* is a tiny JavaScript library (14kB) for dealing with colors!
-
-* read colors from a wide range of formats
-* analyze and manipulate colors
-* convert colors into wide range of formats
-* linear and bezier interpolation in different color spaces
-
-![chroma.js](images/equality8.gif)
 
 
 ### rgb(r:number, g:number, b:number)
