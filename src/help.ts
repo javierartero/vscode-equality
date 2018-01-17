@@ -20,29 +20,31 @@ export class Help {
 		this.error = error;
     this.defaultMessage = defaultMessage;
     this.errors = [
-      new Error("vscode", "View docs vscode",
-       "https://code.visualstudio.com/docs/extensionAPI/vscode-api"),
-      new Error("chroma", "View docs chroma.js",
-        "http://gka.github.io/chroma.js"),
-      new Error("faker", "View docs faker.js",
-       "https://github.com/marak/Faker.js/"),
-      new Error(this.equal+"e.", "View equality custom variables",
-       "https://github.com/javierartero/vscode-equality#custom-vars"),
-      new Error("rand", "View equality rand",
-       "https://github.com/javierartero/vscode-equality#rand"),
-      new Error("rgb", "View equality rgb",
-       "https://github.com/javierartero/vscode-equality#rgb"),
-      new Error("hex", "View equality hex",
-       "https://github.com/javierartero/vscode-equality#hex"),
+      new Error('vscode', 'View docs vscode',
+       'https://code.visualstudio.com/docs/extensionAPI/vscode-api'),
+      new Error('_', 'View docs lodash.js',
+       'https://lodash.com/docs/'),
+      new Error('chroma', 'View docs chroma.js',
+        'http://gka.github.io/chroma.js'),
+      new Error('faker', 'View docs faker.js',
+       'https://github.com/marak/Faker.js/'),
+      new Error(this.equal+'e.', 'View equality custom variables',
+       'https://github.com/javierartero/vscode-equality#custom-vars'),
+      new Error('rand', 'View equality rand',
+       'https://github.com/javierartero/vscode-equality#rand'),
+      new Error('rgb', 'View equality rgb',
+       'https://github.com/javierartero/vscode-equality#rgb'),
+      new Error('hex', 'View equality hex',
+       'https://github.com/javierartero/vscode-equality#hex'),
       new Error(this.equal, this.defaultMessage,
-       "https://github.com/javierartero/vscode-equality")
+       'https://github.com/javierartero/vscode-equality')
     ];
 
     this.evalue();
 	}
 
   private evalue() {
-    console.log("evalue errors");
+    console.log('evalue errors');
     let message = [];
     let url = [];
 
