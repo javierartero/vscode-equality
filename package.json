@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "Evaluate javascript and replace this with the result",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
@@ -75,15 +75,15 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "chroma-js": "^1.3.5",
+        "chroma-js": "1.4.0",
         "faker": "^4.1.0",
-        "lodash": "^4.17.4"
+        "lodash": "4.17.11"
     },
     "devDependencies": {
-        "@types/mocha": "^2.2.32",
-        "@types/node": "^6.0.40",
-        "mocha": "^2.3.3",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
+        "@types/mocha": "5.2.5",
+        "@types/node": "10.12.9",
+        "mocha": "^5.2.0",
+        "typescript": "3.1.6",
+        "vscode": "1.1.21"
     }
 }
