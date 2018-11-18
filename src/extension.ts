@@ -40,8 +40,8 @@ function equality() {
           ),
           contentText = editor.document.getText(contentSelection);
 
-        if (contentText.length > 3) {
-          result = evaluate(contentText);
+        const result = evaluate(contentText);
+        if (contentText.length > 3 && result !== false) {
           edit.replace(contentSelection, String(result));
         }
       }
