@@ -2,7 +2,7 @@
     "name": "equality",
     "displayName": "equality",
     "description": "Evaluate javascript and replace this with the result",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "publisher": "javierartero",
     "engines": {
         "vscode": "^1.12.0"
