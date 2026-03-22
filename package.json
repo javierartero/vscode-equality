@@ -4,6 +4,7 @@
   "description": "Evaluate JavaScript expressions inline and replace them with the result.",
   "version": "0.8.0",
   "publisher": "javierartero",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.90.0"
   },
