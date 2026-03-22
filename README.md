@@ -1,98 +1,131 @@
-# equality README
-This plugin use eval(), custom functions, methods and external libraries to evaluate and replace javascript content
+# Equality
 
-## You can use multiples cursors <a id="multiple-cursor"></a>
+Equality evaluates JavaScript expressions inline inside the active editor and replaces them with the result.
 
-![multiple-cursor](images/equality6.gif)
+## Multi-cursor support
 
-## You can calculate <a id="calculate"></a>
+Each cursor evaluates the expression that starts at the last configured symbol on its current line.
+
+![Multiple cursor demo](images/equality6.gif)
+
+## Calculate expressions
+
+Write an expression starting with the configured equality symbol and place the cursor at the end of the expression.
+
+```text
+=2 + 2
 ```
-=2+2 //Press Ctrl + Enter
-```
-![calculate](images/equality1.gif)
 
-## You can create personal vars <a id="custom-vars"></a>
-Add equality.vars in your users settings
-```
+Run `Equality: Evaluate expression` with `Ctrl+Enter` on Windows/Linux or `Cmd+Enter` on macOS.
+
+![Calculate demo](images/equality1.gif)
+
+## Custom variables
+
+Add variables in your VS Code settings through `equality.vars`. They are exposed inside expressions as `e.<name>`.
+
+```json
 "equality.vars": {
-    "name": "Javier Artero",
-    "company": "MarsBased SL",
-    "github": "https://github.com/javierartero"
+  "name": "Javier Artero",
+  "company": "MarsBased",
+  "github": "https://github.com/javierartero"
 }
 ```
-Reload window
 
-When you call a `=e` you will be calling equality.vars
+Example:
+
+```text
+=e.name
 ```
-=e.plugin //Press Ctrol + Enter
-```
-![vars](images/equality3.gif)
+
+![Custom variables demo](images/equality3.gif)
 
 ## Help
 
-Now the plugin has a help system that will appear when it is not able to evaluate the content
+Use `=help` to open the documentation picker. When an evaluation fails, Equality shows relevant documentation links for the current expression.
 
-You can open all the help elements from the method
-```
+```text
 =help
 ```
 
-![Help](images/equality4.gif)
+![Help demo](images/equality4.gif)
 
-## You can use the [chroma.js](http://gka.github.io/chroma.js/)
+## Bundled libraries
 
-*chroma.js* is a tiny JavaScript library (14kB) for dealing with colors!
+### `chroma-js`
 
-* read colors from a wide range of formats
-* analyze and manipulate colors
-* convert colors into wide range of formats
-* linear and bezier interpolation in different color spaces
+Equality exposes `chroma` and the alias `c`.
 
-![chroma.js](images/equality8.gif)
-
-## You can use the [lodash.js](https://lodash.com/)
-
-Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
-Lodash’s modular methods are great for:
-
-* Iterating arrays, objects, & strings
-* Manipulating & testing values
-* Creating composite functions
-
-![lodash.js](images/equality9.gif)
-
-## You can use the "faker.js"
-faker.js is an external library generate massive amounts of fake
-```
-=faker.name.findName() //Press Ctrol + Enter
-```
-![Faker](images/equality2.gif)
-
-* [faker.js gitHub](https://github.com/marak/Faker.js/)
-* [JSDoc API Browser](http://marak.github.io/faker.js/)
-
-## Custom functions and methods
-
-### rand(min:number = 0, max:number = 100) <a id="rand"></a>
-
-![rand](images/equality6.gif)
-
-Default arguments
-min:number = 0, max:number = 100
-
-```
-=rand(-100,100)
+```text
+=chroma.scale(['#FFF', 'blue']).colors(5)
+=c('white').hex()
 ```
 
+![Chroma demo](images/equality8.gif)
 
-### rgb(r:number, g:number, b:number)
+### `lodash`
 
-![color](images/equality7.gif)
+Equality exposes lodash through `_`.
 
-### hex(hex:string) <a id="hex"></a>
+```text
+=_.camelCase('change of format case')
+=_.repeat('I will not copy in class \n', 5)
+```
 
-This method allows the use of shorthand '# ff0'
+![Lodash demo](images/equality9.gif)
 
-![color](images/equality7.gif)
+### `faker`
 
-## Put an equality in your life...
+Equality exposes `faker` and the alias `f`. The locale is controlled through `faker.locale`.
+
+```text
+=faker.name.findName()
+```
+
+![Faker demo](images/equality2.gif)
+
+## Built-in helpers
+
+### `rand(min = 0, max = 100)`
+
+```text
+=rand(-100, 100)
+```
+
+![Rand demo](images/equality5.gif)
+
+### `rgb('#ff00aa')`
+
+Converts a hexadecimal color to an RGB string. Shorthand values such as `#f0a` are supported.
+
+### `hex(255, 0, 170)`
+
+Converts RGB channels to hexadecimal notation.
+
+```text
+=rgb('#ff87dd')
+=hex(255, 213, 65)
+```
+
+![Color helpers demo](images/equality7.gif)
+
+## Configuration
+
+### `equality.symbol`
+
+Defines the symbol used to find the expression start. The default is `=`.
+
+### `equality.vars`
+
+Defines custom variables exposed through `e`.
+
+### `faker.locale`
+
+Controls the locale used by faker helpers.
+
+## Development
+
+```bash
+npm install
+npm test
+```

@@ -1,75 +1,102 @@
-'use strict';
-
 import * as vscode from 'vscode';
 
-class Error {
-  constructor(public name: string,
-              public message: string,
-              public url: string){}
+export interface HelpTopic {
+  key: string;
+  label: string;
+  url: string;
 }
 
-export class Help {
-  private error: string;
-  private defaultMessage: string;
-  private errors:any;
-  private equal: string = String(
-    vscode.workspace.getConfiguration().get('equality.symbol'));
+export interface HelpPickItem extends vscode.QuickPickItem {
+  topic: HelpTopic;
+}
 
+export function getHelpTopics(symbol: string): HelpTopic[] {
+  return [
+    {
+      key: 'vscode',
+      label: 'VS Code extension API documentation',
+      url: 'https://code.visualstudio.com/api',
+    },
+    {
+      key: '_',
+      label: 'Lodash documentation',
+      url: 'https://lodash.com/docs/',
+    },
+    {
+      key: 'chroma',
+      label: 'Chroma.js documentation',
+      url: 'https://gka.github.io/chroma.js/',
+    },
+    {
+      key: 'faker',
+      label: 'Faker documentation',
+      url: 'https://github.com/Marak/Faker.js/',
+    },
+    {
+      key: `${symbol}e.`,
+      label: 'Equality custom variables',
+      url: 'https://github.com/javierartero/vscode-equality#custom-variables',
+    },
+    {
+      key: 'rand',
+      label: 'Equality rand helper',
+      url: 'https://github.com/javierartero/vscode-equality#helpers',
+    },
+    {
+      key: 'rgb',
+      label: 'Equality rgb helper',
+      url: 'https://github.com/javierartero/vscode-equality#helpers',
+    },
+    {
+      key: 'hex',
+      label: 'Equality hex helper',
+      url: 'https://github.com/javierartero/vscode-equality#helpers',
+    },
+    {
+      key: symbol,
+      label: 'Equality extension documentation',
+      url: 'https://github.com/javierartero/vscode-equality',
+    },
+  ];
+}
 
-  constructor(error:string, defaultMessage:string = 'equality documentation 🤓') {
-		this.error = error;
-    this.defaultMessage = defaultMessage;
-    this.errors = [
-      new Error('vscode', 'View docs vscode',
-       'https://code.visualstudio.com/docs/extensionAPI/vscode-api'),
-      new Error('_', 'View docs lodash.js',
-       'https://lodash.com/docs/'),
-      new Error('chroma', 'View docs chroma.js',
-        'http://gka.github.io/chroma.js'),
-      new Error('faker', 'View docs faker.js',
-       'https://github.com/marak/Faker.js/'),
-      new Error(this.equal+'e.', 'View equality custom variables',
-       'https://github.com/javierartero/vscode-equality#custom-vars'),
-      new Error('rand', 'View equality rand',
-       'https://github.com/javierartero/vscode-equality#rand'),
-      new Error('rgb', 'View equality rgb',
-       'https://github.com/javierartero/vscode-equality#rgb'),
-      new Error('hex', 'View equality hex',
-       'https://github.com/javierartero/vscode-equality#hex'),
-      new Error(this.equal, this.defaultMessage,
-       'https://github.com/javierartero/vscode-equality')
-    ];
+export function resolveHelpTopics(expression: string, symbol: string): HelpTopic[] {
+  const normalizedExpression = expression.trim();
+  const allTopics = getHelpTopics(symbol);
 
-    this.evalue();
-	}
-
-  private evalue() {
-    console.log('evalue errors');
-    let message = [];
-    let url = [];
-
-    if(this.error == 'all'){
-      let errorsReverse = this.errors.reverse();
-      for (let e of this.errors) {
-        message.push(e.message);
-        url.push(e.url);
-      }
-    }else{
-      for (let e of this.errors) {
-        if(this.error.includes(e.name)){
-          message.push(e.message);
-          url.push(e.url);
-        }
-      }
-    }
-
-    vscode.window.showQuickPick(message)
-      .then(function(val){
-        if(val && url){
-          let index = message.indexOf(val);
-          vscode.commands.executeCommand('vscode.open',
-           vscode.Uri.parse(url[index]));
-        }
-      });
+  if (normalizedExpression === 'all') {
+    return [...allTopics];
   }
+
+  return allTopics.filter((topic) => normalizedExpression.includes(topic.key));
+}
+
+export async function showHelpPicker(
+  expression: string,
+  symbol: string,
+  placeholder: string,
+): Promise<void> {
+  const topics = resolveHelpTopics(expression, symbol);
+
+  if (topics.length === 0) {
+    void vscode.window.showInformationMessage(placeholder);
+    return;
+  }
+
+  const items: HelpPickItem[] = topics.map((topic) => ({
+    label: topic.label,
+    description: topic.url,
+    topic,
+  }));
+
+  const selected = await vscode.window.showQuickPick(items, {
+    placeHolder: placeholder,
+    matchOnDescription: true,
+  });
+
+  if (!selected) {
+    return;
+  }
+
+  await vscode.env.openExternal(vscode.Uri.parse(selected.topic.url));
 }
