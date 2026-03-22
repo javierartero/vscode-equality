@@ -81,6 +81,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint . --ext .ts",
+    "vscode:prepublish": "npm run package",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "package": "npm run clean && npm run compile"
