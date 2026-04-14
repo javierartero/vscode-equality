@@ -129,3 +129,5 @@ Controls the locale used by faker helpers.
 npm install
 npm test
 ```
+
+Ownership verification for Visual Studio Marketplace support
